@@ -15,7 +15,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Z, KC_X,         KC_C,         KC_V,         KC_B,            KC_N,         KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,
 
     KC_ESC,           LT(NAV, KC_SPC),  LT(MOUSE, KC_TAB),
-    LT(SYMB, KC_ENT), LT(NUM, KC_BSPC), LT(FN, KC_DEL)
+    LT(SYMB, KC_ENT), LT(NUM, KC_BSPC), LT(FN, KC_APP)
     ),
 
 [NUM] = LAYOUT_gergoplex(
@@ -42,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_HOME,       KC_PGDN,       KC_PGUP,     KC_END,        KC_NO,
 
     KC_NO,  KC_NO,   KC_NO,
-    KC_ENT, KC_BSPC, KC_DEL
+    KC_NO,  KC_DEL,  KC_NO
     ),
 
 [FN] = LAYOUT_gergoplex(
