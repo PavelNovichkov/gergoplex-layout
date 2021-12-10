@@ -14,7 +14,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_A, LALT_T(KC_S), LCTL_T(KC_D), LSFT_T(KC_F), LGUI_T(KC_G),    RGUI_T(KC_H), RSFT_T(KC_J), RCTL_T(KC_K), LALT_T(KC_L), KC_SCLN,
     KC_Z, KC_X,         KC_C,         KC_V,         KC_B,            KC_N,         KC_M,         KC_COMM,      KC_DOT,       KC_SLSH,
 
-    KC_ESC,           LT(NAV, KC_SPC),  LT(MOUSE, KC_TAB),
+    KC_TAB,           LT(NAV, KC_SPC),  LT(MOUSE, KC_ESC),
     LT(SYMB, KC_ENT), LT(NUM, KC_BSPC), LT(FN, KC_APP)
     ),
 
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,  KC_NO
     ),
 
-[MOUSE] = LAYOUT_gergoplex(
+[MOUSE] = LAYOUT_split_3x5_3(
     KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO, KC_WH_L, KC_MS_U, KC_WH_R, KC_NO,
     KC_NO, KC_LALT, KC_LCTL, KC_LSFT, KC_LGUI,    KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO,
     KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,      KC_NO, KC_WH_D, KC_WH_U, KC_NO,   KC_NO,
