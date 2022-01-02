@@ -28,9 +28,9 @@ const key_override_t comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_
 const key_override_t dot_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COLN);
 
 const key_override_t **key_overrides = (const key_override_t *[]){
-    &comma_override,
-    &dot_override,
-    NULL
+  &comma_override,
+  &dot_override,
+  NULL
 };
 
 
