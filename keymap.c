@@ -7,6 +7,22 @@
 #define FN 3
 #define NAV 4
 
+// Key overrides
+
+// shift + comma -> semicolon
+const key_override_t comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_SCLN);
+// shift + dot -> colon
+const key_override_t dot_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COLN);
+
+const key_override_t **key_overrides = (const key_override_t *[]){
+    &comma_override,
+    &dot_override,
+    NULL
+};
+
+
+// Layout
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_split_3x5_3(
     KC_Q, KC_W,         KC_F,         KC_P,         KC_B,    KC_J, KC_L,         KC_U,         KC_Y,         KC_QUOT,
