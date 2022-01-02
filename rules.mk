@@ -1,5 +1,4 @@
 EXTRAKEY_ENABLE = yes # Audio control and System control
-MOUSEKEY_ENABLE = yes # Mouse keys
 KEY_OVERRIDE_ENABLE = yes # Override shift + key
 
 # Debug options
