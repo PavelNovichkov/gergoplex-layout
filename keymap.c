@@ -34,6 +34,25 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 };
 
 
+// Tapping force hold per key
+// (enable only for home block mods)
+bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+  case HOME_R:
+  case HOME_S:
+  case HOME_T:
+  case HOME_D:
+  case HOME_N:
+  case HOME_E:
+  case HOME_I:
+  case HOME_H:
+    return true;
+  default:
+    return false;
+  }
+}
+
+
 // Layout
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
