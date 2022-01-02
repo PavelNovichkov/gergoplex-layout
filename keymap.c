@@ -7,6 +7,19 @@
 #define FN 3
 #define NAV 4
 
+
+// Key definitions
+
+#define HOME_R LALT_T(KC_R)
+#define HOME_S LSFT_T(KC_S)
+#define HOME_T LCTL_T(KC_T)
+#define HOME_D LGUI_T(KC_D)
+#define HOME_N RCTL_T(KC_N)
+#define HOME_E RSFT_T(KC_E)
+#define HOME_I LALT_T(KC_I)
+#define HOME_H RGUI_T(KC_H)
+
+
 // Key overrides
 
 // shift + comma -> semicolon
@@ -25,9 +38,9 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_split_3x5_3(
-    KC_Q, KC_W,         KC_F,         KC_P,         KC_B,    KC_J, KC_L,         KC_U,         KC_Y,         KC_QUOT,
-    KC_A, LALT_T(KC_R), LSFT_T(KC_S), LCTL_T(KC_T), KC_G,    KC_M, RCTL_T(KC_N), RSFT_T(KC_E), LALT_T(KC_I), KC_O,
-    KC_Z, KC_X,         KC_C,         LGUI_T(KC_D), KC_V,    KC_K, RGUI_T(KC_H), KC_COMM,      KC_DOT,       KC_SLSH,
+    KC_Q, KC_W,   KC_F,   KC_P,   KC_B,    KC_J, KC_L,   KC_U,    KC_Y,   KC_QUOT,
+    KC_A, HOME_R, HOME_S, HOME_T, KC_G,    KC_M, HOME_N, HOME_E,  HOME_I, KC_O,
+    KC_Z, KC_X,   KC_C,   HOME_D, KC_V,    KC_K, HOME_H, KC_COMM, KC_DOT, KC_SLSH,
 
     KC_NO,  LT(NAV, KC_SPC), OSL(FN),
     KC_APP, OSL(NUM),        KC_NO
