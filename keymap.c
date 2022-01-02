@@ -70,8 +70,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_BSLS, KC_LT, KC_LBRC, KC_LPRN, KC_LCBR,    KC_CIRC, KC_MINS, KC_EQL,  KC_EXLM, KC_ASTR,
     KC_AT,   KC_GT, KC_RBRC, KC_RPRN, KC_RCBR,    KC_TILD, KC_PLUS, KC_COMM, KC_DOT,  KC_SLSH,
 
-    KC_NO,  KC_ESC,  KC_TRNS,
-    KC_SPC, KC_TRNS, KC_NO
+    KC_NO,  LT(NAV, KC_ESC), KC_TRNS,
+    KC_SPC, KC_TRNS,         KC_NO
     ),
 
 [FN] = LAYOUT_split_3x5_3(
