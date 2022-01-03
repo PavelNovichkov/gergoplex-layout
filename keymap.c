@@ -88,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO, OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), KC_NO,    KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,
     KC_NO, KC_NO,         KC_NO,         OSM(MOD_LGUI), KC_NO,    KC_NO,   KC_BSPC, KC_TAB,  KC_DEL,  KC_NO,
 
-    KC_NO,   TO(BASE), KC_NO,
-    TO(NAV), KC_ENT,  KC_NO
+    KC_NO, KC_TRNS, KC_NO,
+    KC_NO, KC_ENT,  KC_NO
     )
 };
