@@ -35,7 +35,7 @@ const key_override_t **key_overrides = (const key_override_t *[]){
 
 
 // Tapping force hold per key
-// (enable only for home block mods)
+// (enable for home block mods and space)
 bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case HOME_R:
@@ -46,6 +46,7 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
   case HOME_E:
   case HOME_I:
   case HOME_H:
+  case LT(NAV, KC_SPC):
     return true;
   default:
     return false;
