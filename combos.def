@@ -1,3 +1,1 @@
-// Thumbs
-// FIXME: hard-coded layer numbers
-COMB(thumbs, TG(1), KC_TAB, LT(5, KC_APP))
+COMB(thumbs, TG_RUS, HOME_R, HOME_S, HOME_T)
