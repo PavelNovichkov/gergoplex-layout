@@ -21,7 +21,8 @@
 // Custom keycodes
 
 enum custom_keycodes {
-  TG_RUS = SAFE_RANGE
+  TG_RUS = SAFE_RANGE,
+  ESCAPE
 };
 
 
@@ -120,8 +121,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       del_oneshot_mods(MOD_BIT(KC_RALT));
     } else {
       switch (keycode) {
-      // thumb keys
+      // thumb keys and combos:
       case TG_RUS:
+      case ESCAPE:
       case LT(NAV, KC_SPC):
       case OSL(FN):
       case KC_APP:
@@ -171,6 +173,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       is_rus_on = !is_rus_on;
     }
+    break;
+  case ESCAPE:
+    if (record->event.pressed) {
+      if (get_highest_layer(layer_state) != BASE) {
+        layer_clear();
+      } else {
+        tap_code(KC_ESC);
+      }
+    }
+    break;
   }
+
   return true;
 }
