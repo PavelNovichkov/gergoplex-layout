@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_PIPE, KC_AT, KC_HASH, KC_DLR, KC_NO,    KC_NO, KC_UNDS, KC_AMPR, KC_BSLS, KC_GRV,
     KC_NO,   KC_NO, KC_NO,   KC_NO,  KC_NO,    KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_DQUO,
 
-    KC_NO,   KC_NO,   KC_CAPS,
+    KC_NO,   KC_NO,   CAPSWRD,
     KC_TRNS, KC_TRNS, KC_NO
     ),
 
