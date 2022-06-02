@@ -8,7 +8,7 @@ DEBUG_MATRIX = no
 CONSOLE_ENABLE = no
 
 # Combos
-# VPATH+=keyboards/gboards/
+COMBO_ENABLE = yes
 
 # Copied from default layout
 ifeq ($(strip $(DEBUG_MATRIX)), yes)

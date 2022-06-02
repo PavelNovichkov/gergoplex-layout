@@ -26,8 +26,28 @@ enum custom_keycodes {
 };
 
 
-// This has to be included after the definitions of custom keycodes and aliases.
-#include "g/keymap_combo.h"
+// Combos
+
+enum combo_events {
+  CMB_RUS,
+  CMB_ESC,
+  CMB_NAV,
+  CMB_NUM,
+  COMBO_LENGTH
+};
+uint16_t COMBO_LEN = COMBO_LENGTH;
+
+const uint16_t PROGMEM cmb_rus[] = {HOME_R, HOME_S, HOME_T, COMBO_END};
+const uint16_t PROGMEM cmb_esc[] = {HOME_N, HOME_E, HOME_I, COMBO_END};
+const uint16_t PROGMEM cmb_nav[] = {KC_X, KC_C, HOME_D, COMBO_END};
+const uint16_t PROGMEM cmb_num[] = {HOME_H, KC_COMM, KC_DOT, COMBO_END};
+
+combo_t key_combos[] = {
+  [CMB_RUS] = COMBO(cmb_rus, TG_RUS),
+  [CMB_ESC] = COMBO(cmb_esc, ESCAPE),
+  [CMB_NAV] = COMBO(cmb_nav, TO(NAV)),
+  [CMB_NUM] = COMBO(cmb_num, TO(NUM)),
+};
 
 
 // Key overrides
