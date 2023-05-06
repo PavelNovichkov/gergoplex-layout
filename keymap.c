@@ -1,9 +1,9 @@
 #include QMK_KEYBOARD_H
 
 #define BASE 0
-#define NUM 2
-#define FN 3
-#define NAV 4
+#define NUM 1
+#define FN 2
+#define NAV 3
 
 
 // Key definitions
