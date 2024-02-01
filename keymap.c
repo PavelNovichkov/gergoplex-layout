@@ -42,24 +42,34 @@ enum custom_keycodes {
 // Combos
 
 enum combo_events {
-  CMB_RUS,
+  CMB_BSPC,
+  CMB_CW,
+  CMB_DEL,
+  CMB_ENT,
   CMB_ESC,
-  CMB_NAV,
-  CMB_NUM,
-  COMBO_LENGTH
+  CMB_RUS,
+  CMB_TAB
 };
-uint16_t COMBO_LEN = COMBO_LENGTH;
 
-const uint16_t PROGMEM cmb_rus[] = {HOME_R, HOME_S, HOME_T, COMBO_END};
-const uint16_t PROGMEM cmb_esc[] = {HOME_N, HOME_E, HOME_I, COMBO_END};
-const uint16_t PROGMEM cmb_nav[] = {KC_X, KC_C, HOME_D, COMBO_END};
-const uint16_t PROGMEM cmb_num[] = {HOME_H, KC_COMM, KC_DOT, COMBO_END};
+// Left hand
+const uint16_t PROGMEM cmb_esc[] = {KC_W, KC_F, COMBO_END};
+const uint16_t PROGMEM cmb_rus[] = {KC_F, KC_P, COMBO_END};
+const uint16_t PROGMEM cmb_del[] = {KC_C, HOME_D, COMBO_END};
+const uint16_t PROGMEM cmb_ent[] = {KC_X, KC_C, COMBO_END};
+
+// Right hand
+const uint16_t PROGMEM cmb_cw[] = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM cmb_bspc[] = {HOME_H, KC_COMM, COMBO_END};
+const uint16_t PROGMEM cmb_tab[] = {KC_COMM, KC_DOT, COMBO_END};
 
 combo_t key_combos[] = {
-  [CMB_RUS] = COMBO(cmb_rus, TG_RUS),
+  [CMB_BSPC] = COMBO(cmb_bspc, KC_BSPC),
+  [CMB_CW] = COMBO(cmb_cw, CW_TOGG),
+  [CMB_DEL] = COMBO(cmb_del, KC_DEL),
+  [CMB_ENT] = COMBO(cmb_ent, KC_ENT),
   [CMB_ESC] = COMBO(cmb_esc, ESCAPE),
-  [CMB_NAV] = COMBO(cmb_nav, TO(NAV)),
-  [CMB_NUM] = COMBO(cmb_num, TO(NUM)),
+  [CMB_RUS] = COMBO(cmb_rus, TG_RUS),
+  [CMB_TAB] = COMBO(cmb_tab, KC_TAB),
 };
 
 
