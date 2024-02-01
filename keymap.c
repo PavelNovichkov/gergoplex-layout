@@ -1,9 +1,10 @@
 #include QMK_KEYBOARD_H
 
 #define BASE 0
-#define NUM 1
-#define FN 2
+#define SYM 1
+#define NUM 2
 #define NAV 3
+#define FN 4
 
 
 // Key definitions
@@ -16,6 +17,18 @@
 #define HOME_E RSFT_T(KC_E)
 #define HOME_I LALT_T(KC_I)
 #define HOME_H RGUI_T(KC_H)
+
+#define MY_ELPS RALT(KC_GRV)
+#define MY_NBSP RSA(KC_GRV)
+#define MY_EUR RALT(KC_4)
+#define MY_LSQT RALT(KC_9)
+#define MY_RSQT RALT(KC_0)
+#define MY_EN_D RALT(KC_MINS)
+#define MY_EM_D RSA(KC_MINS)
+#define MY_LDQT RALT(KC_LBRC)
+#define MY_RDQT RALT(KC_RBRC)
+#define MY_LGQT RSA(KC_LBRC)
+#define MY_RGQT RSA(KC_RBRC)
 
 
 // Custom keycodes
@@ -92,35 +105,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_A, HOME_R, HOME_S, HOME_T, KC_G,    KC_M, HOME_N, HOME_E,  HOME_I, KC_O,
     KC_Z, KC_X,   KC_C,   HOME_D, KC_V,    KC_K, HOME_H, KC_COMM, KC_DOT, KC_SLSH,
 
-    KC_NO,   LT(NAV, KC_SPC), KC_APP,
-    OSL(FN), OSL(NUM),        KC_NO
+    KC_NO,    LT(NAV, KC_SPC), KC_APP,
+    OSL(NUM), OSL(SYM),        KC_NO
+    ),
+
+[SYM] = LAYOUT_split_3x5_3(
+    KC_AT,   KC_LBRC, KC_RBRC,         KC_DLR,          KC_NO,      KC_NO,   KC_AMPR,        KC_LT,   KC_GT,   KC_GRV,
+    KC_PERC, KC_LPRN, LSFT_T(KC_RPRN), LCTL_T(KC_UNDS), KC_HASH,    KC_CIRC, RCTL_T(KC_EQL), KC_MINS, KC_PLUS, KC_ASTR,
+    KC_PIPE, KC_LCBR, KC_RCBR,         KC_BSLS,         KC_NO,      KC_TILD, KC_EXLM,        KC_COMM, KC_DOT,  KC_SLSH,
+
+    KC_NO, OSL(NUM), OSL(FN),
+    KC_NO, KC_NO,    KC_NO
     ),
 
 [NUM] = LAYOUT_split_3x5_3(
-    KC_6,    KC_4,  KC_2,    KC_0,    KC_8,       KC_9,    KC_1,    KC_3,    KC_5,    KC_7,
-    KC_PERC, KC_LT, KC_LBRC, KC_LPRN, KC_LCBR,    KC_CIRC, KC_MINS, KC_EQL,  KC_PLUS, KC_ASTR,
-    KC_NO,   KC_GT, KC_RBRC, KC_RPRN, KC_RCBR,    KC_TILD, KC_EXLM, KC_COMM, KC_DOT,  KC_SLSH,
+    KC_NO, MY_LGQT, MY_RGQT, KC_NO,        KC_NO,     KC_NO,   MY_EM_D,      MY_EN_D, MY_ELPS, KC_NO,
+    KC_6,  KC_4,    KC_2,    LCTL_T(KC_0), MY_EUR,    MY_NBSP, RCTL_T(KC_1), KC_3,    KC_5,    KC_7,
+    KC_NO, MY_LDQT, MY_RDQT, KC_8,         KC_NO,     KC_NO,   KC_9,         MY_LSQT, MY_RSQT, KC_NO,
 
-    KC_NO,   KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_NO
-    ),
-
-[FN] = LAYOUT_split_3x5_3(
-    KC_F6,   KC_F4, KC_F2,   KC_F10, KC_F8,    KC_F9, KC_F1,   KC_F3,   KC_F5,   KC_F7,
-    KC_PIPE, KC_AT, KC_HASH, KC_DLR, KC_NO,    KC_NO, KC_UNDS, KC_AMPR, KC_BSLS, KC_GRV,
-    KC_NO,   KC_NO, KC_NO,   KC_NO,  KC_NO,    KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_DQUO,
-
-    KC_NO,   KC_NO,   CW_TOGG,
-    KC_TRNS, KC_TRNS, KC_NO
+    KC_NO, KC_NO, KC_NO,
+    KC_NO, KC_NO, KC_NO
     ),
 
 [NAV] = LAYOUT_split_3x5_3(
-    QK_BOOT, KC_NO,         KC_NO,         KC_NO,         KC_NO,    KC_NO,   KC_PGUP, KC_UP,   KC_PGDN, KC_NO,
-    KC_NO,   OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), KC_NO,    KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,
-    KC_NO,   KC_NO,         KC_NO,         OSM(MOD_LGUI), KC_NO,    KC_NO,   KC_BSPC, KC_TAB,  KC_DEL,  KC_NO,
+    // QK_BOOT, KC_BRID,       KC_BRIU,       TO(MOUSE),     KC_MUTE,    KC_NO,   KC_PGUP, KC_UP,   KC_PGDN, KC_NO,
+    QK_BOOT, KC_BRID,       KC_BRIU,       KC_NO,         KC_MUTE,    KC_NO,   KC_PGUP, KC_UP,   KC_PGDN, KC_NO,
+    CW_TOGG, OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), KC_VOLD,    KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,
+    TG_RUS,  KC_ESC,        KC_ENT,        OSM(MOD_LGUI), KC_VOLU,    KC_NO,   KC_BSPC, KC_TAB,  KC_DEL,  KC_NO,
 
-    KC_NO, KC_TRNS, KC_NO,
-    KC_NO, KC_ENT,  KC_NO
+    KC_NO, KC_NO,    KC_NO,
+    KC_NO, OSL(NUM), KC_NO
+    ),
+
+[FN] = LAYOUT_split_3x5_3(
+    KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO,     KC_NO,  KC_NO, KC_NO,   KC_NO,   KC_NO,
+    KC_F6, KC_F4, KC_F2, KC_F10, KC_F12,    KC_F11, KC_F1, KC_F3,   KC_F5,   KC_F7,
+    KC_NO, KC_NO, KC_NO, KC_F8,  KC_NO,     KC_NO,  KC_F9, KC_PSCR, KC_WAKE, KC_NO,
+
+    KC_NO, KC_NO, KC_NO,
+    KC_NO, KC_NO, KC_NO
     )
 };
 
@@ -145,7 +168,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       case TG_RUS:
       case ESCAPE:
       case LT(NAV, KC_SPC):
-      case OSL(FN):
+      case OSL(SYM):
       case KC_APP:
       case OSL(NUM):
         del_oneshot_mods(MOD_BIT(KC_RALT));
@@ -201,6 +224,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       } else {
         tap_code(KC_ESC);
       }
+    }
+    break;
+    // Mod-tap cannot tap shifted keys, so we have to intercept it as
+    // described in the QMK documentation.
+  case LCTL_T(KC_UNDS):
+    if (record->tap.count && record->event.pressed) {
+      tap_code16(KC_UNDS);
+      return false;
+    }
+    break;
+  case LSFT_T(KC_RPRN):
+    if (record->tap.count && record->event.pressed) {
+      tap_code16(KC_RPRN);
+      return false;
     }
     break;
   }
