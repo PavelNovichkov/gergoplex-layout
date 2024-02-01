@@ -85,8 +85,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_A, HOME_R, HOME_S, HOME_T, KC_G,    KC_M, HOME_N, HOME_E,  HOME_I, KC_O,
     KC_Z, KC_X,   KC_C,   HOME_D, KC_V,    KC_K, HOME_H, KC_COMM, KC_DOT, KC_SLSH,
 
-    KC_NO,    LT(NAV, KC_SPC), KC_APP,
-    OSL(NUM), OSL(SYM),        KC_NO
+    KC_NO,  LT(NAV, KC_SPC), KC_APP,
+    QK_REP, OSL(SYM),        KC_NO
     ),
 
 [SYM] = LAYOUT_split_3x5_3(
