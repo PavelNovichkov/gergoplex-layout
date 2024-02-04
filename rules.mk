@@ -10,7 +10,8 @@ SRC += features/rus_layout.c
 VERBOSE = no
 DEBUG_MATRIX_SCAN_RATE = no
 DEBUG_MATRIX = no
-CONSOLE_ENABLE = no
+CONSOLE_ENABLE = yes # for the heatmap
+SRC += features/heatmap.c
 
 # Combos
 COMBO_ENABLE = yes
