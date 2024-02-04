@@ -5,6 +5,7 @@
 #ifdef CONSOLE_ENABLE
 #include "features/heatmap.h"
 #endif
+#include "features/window_switcher.h"
 
 // Combos
 
@@ -89,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 [MOUSE] = LAYOUT_split_3x5_3(
-    KC_NO, KC_NO,         KC_NO,         KC_NO,         KC_NO,    KC_NO,   KC_WH_U, KC_MS_U, KC_WH_D, KC_NO,
+    KC_NO, SW_WIN,        KC_NO,         KC_NO,         KC_NO,    KC_NO,   KC_WH_U, KC_MS_U, KC_WH_D, KC_NO,
     KC_NO, OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), KC_NO,    KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R,
     KC_NO, KC_NO,         KC_NO,         OSM(MOD_LGUI), KC_NO,    KC_NO,   KC_BTN2, KC_BTN3, KC_NO,   KC_NO,
 
@@ -104,6 +105,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   heatmap_log(keycode, record);
 #endif
   if (!process_rus_layout(keycode, record)) { return false; }
+  if (!process_window_switcher(keycode, record, SW_WIN)) { return false; }
 
   switch (keycode) {
   case MY_COMM:
@@ -188,4 +190,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
 
   return true;
+}
+
+
+void matrix_scan_user(void) {
+  window_switcher_task();
 }
