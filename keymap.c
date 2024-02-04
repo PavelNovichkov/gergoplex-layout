@@ -50,18 +50,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 [SYM] = LAYOUT_split_3x5_3(
-    KC_AT,   KC_LBRC, KC_RBRC,         KC_DLR,          KC_NO,      KC_NO,   KC_AMPR,        KC_LT,   KC_GT,   KC_GRV,
+    KC_NO,   KC_LBRC, KC_RBRC,         KC_DLR,          KC_NO,      KC_NO,   KC_AMPR,        KC_LT,   KC_GT,   KC_NO,
     KC_PERC, KC_LPRN, LSFT_T(KC_RPRN), LCTL_T(KC_UNDS), KC_HASH,    KC_CIRC, RCTL_T(KC_EQL), KC_MINS, KC_PLUS, KC_ASTR,
-    KC_PIPE, KC_LCBR, KC_RCBR,         KC_BSLS,         KC_NO,      KC_TILD, KC_EXLM,        KC_COMM, KC_DOT,  KC_SLSH,
+    KC_NO,   KC_LCBR, KC_RCBR,         KC_BSLS,         KC_NO,      KC_TILD, KC_EXLM,        MY_GRV,  MY_AT,   MY_PIPE,
 
     KC_NO,   OSL(NUM), OSL(FN),
     KC_TRNS, KC_TRNS,  KC_NO
     ),
 
 [NUM] = LAYOUT_split_3x5_3(
-    KC_NO, MY_LGQT, MY_RGQT, KC_NO,        KC_NO,     KC_NO,   MY_EM_D,      MY_EN_D, MY_ELPS, KC_NO,
-    KC_6,  KC_4,    KC_2,    LCTL_T(KC_0), MY_EUR,    MY_NBSP, RCTL_T(KC_1), KC_3,    KC_5,    KC_7,
-    KC_NO, MY_LDQT, MY_RDQT, KC_8,         KC_NO,     KC_NO,   KC_9,         MY_LSQT, MY_RSQT, KC_NO,
+    KC_NO, KC_NO,  KC_NO,  KC_NO,        KC_NO,     KC_NO,   MY_EM_D,      MY_EN_D, MY_ELPS, KC_NO,
+    KC_6,  KC_4,   KC_2,   LCTL_T(KC_0), MY_EUR,    MY_NBSP, RCTL_T(KC_1), KC_3,    KC_5,    KC_7,
+    KC_NO, MY_LQT, MY_RQT, KC_8,         KC_NO,     KC_NO,   KC_9,         MY_LSQT, MY_RSQT, KC_NO,
 
     KC_NO,   KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_NO
@@ -98,6 +98,51 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
   case MY_DOT:
     process_custom_key(record, KC_DOT, KC_COLN);
+    return false;
+  case MY_GRV:
+    if (is_rus_on()) {
+      process_custom_key(record, KC_COMM, KC_SCLN);
+    } else {
+      if (record->event.pressed) {
+        tap_code(KC_GRV);
+      }
+    }
+    return false;
+  case MY_AT:
+    if (is_rus_on()) {
+      process_custom_key(record, KC_DOT, KC_COLN);
+    } else {
+      if (record->event.pressed) {
+        tap_code16(KC_AT);
+      }
+    }
+    return false;
+  case MY_PIPE:
+    if (is_rus_on()) {
+      process_custom_key(record, KC_SLSH, KC_QUES);
+    } else {
+      if (record->event.pressed) {
+        tap_code16(KC_PIPE);
+      }
+    }
+    return false;
+  case MY_LQT:
+    if (record->event.pressed) {
+      if (is_rus_on()) {
+        tap_code16(MY_LGQT);
+    } else {
+        tap_code16(MY_LDQT);
+      }
+    }
+    return false;
+  case MY_RQT:
+    if (record->event.pressed) {
+      if (is_rus_on()) {
+        tap_code16(MY_RGQT);
+    } else {
+        tap_code16(MY_RDQT);
+      }
+    }
     return false;
   case TG_RUS:
     if (record->event.pressed) {
