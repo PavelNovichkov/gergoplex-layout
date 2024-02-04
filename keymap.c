@@ -6,6 +6,7 @@
 #include "features/heatmap.h"
 #endif
 #include "features/window_switcher.h"
+#include "features/num_word.h"
 
 // Combos
 
@@ -15,6 +16,7 @@ enum combo_events {
   CMB_DEL,
   CMB_ENT,
   CMB_ESC,
+  CMB_NW,
   CMB_RUS,
   CMB_TAB
 };
@@ -27,6 +29,7 @@ const uint16_t PROGMEM cmb_ent[] = {KC_X, KC_C, COMBO_END};
 
 // Right hand
 const uint16_t PROGMEM cmb_cw[] = {KC_L, KC_U, COMBO_END};
+const uint16_t PROGMEM cmb_nw[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM cmb_bspc[] = {HOME_H, MY_COMM, COMBO_END};
 const uint16_t PROGMEM cmb_tab[] = {MY_COMM, MY_DOT, COMBO_END};
 
@@ -36,6 +39,7 @@ combo_t key_combos[] = {
   [CMB_DEL] = COMBO(cmb_del, KC_DEL),
   [CMB_ENT] = COMBO(cmb_ent, KC_ENT),
   [CMB_ESC] = COMBO(cmb_esc, ESCAPE),
+  [CMB_NW] = COMBO(cmb_nw, TG_NUM),
   [CMB_RUS] = COMBO(cmb_rus, TG_RUS),
   [CMB_TAB] = COMBO(cmb_tab, KC_TAB),
 };
@@ -106,6 +110,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
   if (!process_rus_layout(keycode, record)) { return false; }
   if (!process_window_switcher(keycode, record, SW_WIN)) { return false; }
+  if (!process_num_word(keycode, record, TG_NUM)) { return false; }
 
   switch (keycode) {
   case MY_COMM:
@@ -195,4 +200,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void matrix_scan_user(void) {
   window_switcher_task();
+  num_word_task();
 }

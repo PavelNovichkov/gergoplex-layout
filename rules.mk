@@ -7,6 +7,7 @@ LTO_ENABLE = yes # reduce firmware size
 SRC += features/custom_keys.c
 SRC += features/rus_layout.c
 SRC += features/window_switcher.c
+SRC += features/num_word.c
 
 # Debug options
 VERBOSE = no
