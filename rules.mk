@@ -2,6 +2,7 @@ CAPS_WORD_ENABLE = yes # Smart Caps Lock
 EXTRAKEY_ENABLE = yes # Audio control and System control
 KEY_OVERRIDE_ENABLE = yes # Override shift + key
 REPEAT_KEY_ENABLE = yes
+SRC += features/rus_layout.c
 
 # Debug options
 VERBOSE = no

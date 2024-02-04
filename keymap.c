@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "definitions.h"
+#include "features/rus_layout.h"
 
 // Combos
 
@@ -102,71 +103,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  // When RUS "layer" is on, base layer English letters and
-  // punctuation keys are modified with RALT, e.g. RALT(q) is sent
-  // instead of q, so that the OS can interpret them as Russian
-  // letters using a custom layout. However, we do not send RALT if
-  // any modifiers other than SHIFT are active so that shortcuts still
-  // work, e.g. CTRL(q) is sent as is.
-  static bool is_rus_on = false;
-  if (is_rus_on &&
-      (get_highest_layer(layer_state) == BASE) &&
-      record->event.pressed) {
-    if (get_mods() & (MOD_MASK_CG | MOD_BIT(KC_LALT))) {
-      del_oneshot_mods(MOD_BIT(KC_RALT));
-    } else {
-      switch (keycode) {
-      // thumb keys and combos:
-      case TG_RUS:
-      case ESCAPE:
-      case LT(NAV, KC_SPC):
-      case OSL(SYM):
-      case KC_APP:
-      case OSL(NUM):
-        del_oneshot_mods(MOD_BIT(KC_RALT));
-        break;
-      // Russian letters
-      default:
-        add_oneshot_mods(MOD_BIT(KC_RALT));
-      }
-    }
-  }
-
-  // To reduce the number of Russian letter keys, make some of them
-  // send a different key when held.
-  static uint16_t ru_yeyo_timer;
-  static uint16_t ru_zee_timer;
-  if (is_rus_on) {
-    switch (keycode) {
-    case KC_B: // RU_IE on tap, RU_YO on hold
-      if (record->event.pressed) {
-        ru_yeyo_timer = timer_read();
-      } else {
-        if (timer_elapsed(ru_yeyo_timer) < TAPPING_TERM) {
-          tap_code(KC_B);
-        } else {
-          tap_code(KC_1);
-        }
-      }
-      return false;
-    case KC_QUOT: // RU_ZE on tap, RU_E on hold
-      if (record->event.pressed) {
-        ru_zee_timer = timer_read();
-      } else {
-        if (timer_elapsed(ru_zee_timer) < TAPPING_TERM) {
-          tap_code(KC_QUOT);
-        } else {
-          tap_code(KC_2);
-        }
-      }
-      return false;
-    }
-  }
+  if (!process_rus_layout(keycode, record)) { return false; }
 
   switch (keycode) {
   case TG_RUS:
     if (record->event.pressed) {
-      is_rus_on = !is_rus_on;
+      toggle_rus_layout();
     }
     break;
   case ESCAPE:
