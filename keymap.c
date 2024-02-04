@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_A, HOME_R, HOME_S, HOME_T, KC_G,    KC_M, HOME_N, HOME_E,  HOME_I, KC_O,
     KC_Z, KC_X,   KC_C,   HOME_D, KC_V,    KC_K, HOME_H, MY_COMM, MY_DOT, KC_SLSH,
 
-    KC_NO,  LT(NAV, KC_SPC), KC_APP,
+    KC_NO,  LT(NAV, KC_SPC), LT(MOUSE, KC_APP),
     QK_REP, OSL(SYM),        KC_NO
     ),
 
@@ -71,7 +71,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
 [NAV] = LAYOUT_split_3x5_3(
-    // QK_BOOT, KC_BRID,       KC_BRIU,       TO(MOUSE),     KC_MUTE,    KC_NO,   KC_PGUP, KC_UP,   KC_PGDN, KC_NO,
     QK_BOOT, KC_BRID,       KC_BRIU,       KC_NO,         KC_MUTE,    KC_NO,   KC_PGUP, KC_UP,   KC_PGDN, KC_NO,
     CW_TOGG, OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), KC_VOLD,    KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END,
     TG_RUS,  KC_ESC,        KC_ENT,        OSM(MOD_LGUI), KC_VOLU,    KC_NO,   KC_BSPC, KC_TAB,  KC_DEL,  KC_NO,
@@ -87,6 +86,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KC_NO,   KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_NO
+    ),
+
+[MOUSE] = LAYOUT_split_3x5_3(
+    KC_NO, KC_NO,         KC_NO,         KC_NO,         KC_NO,    KC_NO,   KC_WH_U, KC_MS_U, KC_WH_D, KC_NO,
+    KC_NO, OSM(MOD_LALT), OSM(MOD_LSFT), OSM(MOD_LCTL), KC_NO,    KC_WH_L, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R,
+    KC_NO, KC_NO,         KC_NO,         OSM(MOD_LGUI), KC_NO,    KC_NO,   KC_BTN2, KC_BTN3, KC_NO,   KC_NO,
+
+    KC_NO,   KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_BTN1, KC_NO
     )
 };
 

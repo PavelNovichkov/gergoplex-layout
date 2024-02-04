@@ -8,3 +8,8 @@
 
 #define COMBO_ONLY_FROM_LAYER 0
 #define COMBO_TERM 30
+
+// Mouse key speed and acceleration.
+#define MOUSEKEY_INTERVAL 16
+#define MOUSEKEY_MAX_SPEED 6
+#define MOUSEKEY_TIME_TO_MAX 64

@@ -6,7 +6,7 @@
 #define NUM 2
 #define NAV 3
 #define FN 4
-// #define MOUSE 5
+#define MOUSE 5
 
 
 // Key definitions
