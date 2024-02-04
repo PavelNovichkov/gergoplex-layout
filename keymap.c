@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "definitions.h"
 #include "features/rus_layout.h"
+#include "features/custom_keys.h"
 
 // Combos
 
@@ -22,8 +23,8 @@ const uint16_t PROGMEM cmb_ent[] = {KC_X, KC_C, COMBO_END};
 
 // Right hand
 const uint16_t PROGMEM cmb_cw[] = {KC_L, KC_U, COMBO_END};
-const uint16_t PROGMEM cmb_bspc[] = {HOME_H, KC_COMM, COMBO_END};
-const uint16_t PROGMEM cmb_tab[] = {KC_COMM, KC_DOT, COMBO_END};
+const uint16_t PROGMEM cmb_bspc[] = {HOME_H, MY_COMM, COMBO_END};
+const uint16_t PROGMEM cmb_tab[] = {MY_COMM, MY_DOT, COMBO_END};
 
 combo_t key_combos[] = {
   [CMB_BSPC] = COMBO(cmb_bspc, KC_BSPC),
@@ -36,27 +37,13 @@ combo_t key_combos[] = {
 };
 
 
-// Key overrides
-
-// shift + comma -> semicolon
-const key_override_t comma_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_SCLN);
-// shift + dot -> colon
-const key_override_t dot_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COLN);
-
-const key_override_t **key_overrides = (const key_override_t *[]){
-  &comma_override,
-  &dot_override,
-  NULL
-};
-
-
 // Layout
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_split_3x5_3(
     KC_Q, KC_W,   KC_F,   KC_P,   KC_B,    KC_J, KC_L,   KC_U,    KC_Y,   KC_QUOT,
     KC_A, HOME_R, HOME_S, HOME_T, KC_G,    KC_M, HOME_N, HOME_E,  HOME_I, KC_O,
-    KC_Z, KC_X,   KC_C,   HOME_D, KC_V,    KC_K, HOME_H, KC_COMM, KC_DOT, KC_SLSH,
+    KC_Z, KC_X,   KC_C,   HOME_D, KC_V,    KC_K, HOME_H, MY_COMM, MY_DOT, KC_SLSH,
 
     KC_NO,  LT(NAV, KC_SPC), KC_APP,
     QK_REP, OSL(SYM),        KC_NO
@@ -106,6 +93,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (!process_rus_layout(keycode, record)) { return false; }
 
   switch (keycode) {
+  case MY_COMM:
+    process_custom_key(record, KC_COMM, KC_SCLN);
+    return false;
+  case MY_DOT:
+    process_custom_key(record, KC_DOT, KC_COLN);
+    return false;
   case TG_RUS:
     if (record->event.pressed) {
       toggle_rus_layout();
