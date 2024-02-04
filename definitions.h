@@ -36,7 +36,6 @@
 
 enum custom_keycodes {
   TG_RUS = SAFE_RANGE,
-  REPEAT,
   MY_COMM,
   MY_DOT,
   MY_GRV,
