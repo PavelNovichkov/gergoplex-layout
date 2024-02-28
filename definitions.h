@@ -32,6 +32,10 @@
 #define MY_LGQT RSA(KC_LBRC)
 #define MY_RGQT RSA(KC_RBRC)
 
+#define MY_COPY LCTL(KC_INS)
+#define MY_PSTE LSFT(KC_INS)
+#define MY_CUT LSFT(KC_DEL)
+
 // Custom keycodes
 
 enum custom_keycodes {
