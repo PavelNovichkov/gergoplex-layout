@@ -16,12 +16,14 @@ enum combo_events {
   CMB_DEL,
   CMB_ENT,
   CMB_ESC,
+  CMB_MOUSE,
   CMB_NW,
   CMB_RUS,
   CMB_TAB
 };
 
 // Left hand
+const uint16_t PROGMEM cmb_mouse[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM cmb_esc[] = {KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM cmb_rus[] = {KC_F, KC_P, COMBO_END};
 const uint16_t PROGMEM cmb_del[] = {KC_C, HOME_D, COMBO_END};
@@ -39,6 +41,7 @@ combo_t key_combos[] = {
   [CMB_DEL] = COMBO(cmb_del, KC_DEL),
   [CMB_ENT] = COMBO(cmb_ent, KC_ENT),
   [CMB_ESC] = COMBO(cmb_esc, ESCAPE),
+  [CMB_MOUSE] = COMBO(cmb_mouse, TG(MOUSE)),
   [CMB_NW] = COMBO(cmb_nw, TG_NUM),
   [CMB_RUS] = COMBO(cmb_rus, TG_RUS),
   [CMB_TAB] = COMBO(cmb_tab, KC_TAB),
