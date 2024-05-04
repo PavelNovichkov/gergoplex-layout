@@ -25,7 +25,7 @@ bool process_rus_layout(uint16_t keycode, keyrecord_t* record) {
     del_oneshot_mods(MOD_BIT(KC_RALT));
     return true;
   }
-  if ((get_highest_layer(layer_state) == BASE) && record->event.pressed) {
+  if (record->event.pressed) {
     switch (keycode) {
     // Russian letters
     case KC_A ... KC_Z:
