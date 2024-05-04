@@ -26,14 +26,14 @@ enum combo_events {
 const uint16_t PROGMEM cmb_mouse[] = {KC_Q, KC_W, COMBO_END};
 const uint16_t PROGMEM cmb_esc[] = {KC_W, KC_F, COMBO_END};
 const uint16_t PROGMEM cmb_rus[] = {KC_F, KC_P, COMBO_END};
-const uint16_t PROGMEM cmb_del[] = {KC_C, HOME_D, COMBO_END};
-const uint16_t PROGMEM cmb_ent[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM cmb_ent[] = {KC_C, HOME_D, COMBO_END};
+const uint16_t PROGMEM cmb_tab[] = {KC_X, KC_C, COMBO_END};
 
 // Right hand
 const uint16_t PROGMEM cmb_cw[] = {KC_L, KC_U, COMBO_END};
 const uint16_t PROGMEM cmb_nw[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM cmb_bspc[] = {HOME_H, MY_COMM, COMBO_END};
-const uint16_t PROGMEM cmb_tab[] = {MY_COMM, MY_DOT, COMBO_END};
+const uint16_t PROGMEM cmb_del[] = {MY_COMM, MY_DOT, COMBO_END};
 
 combo_t key_combos[] = {
   [CMB_BSPC] = COMBO(cmb_bspc, KC_BSPC),
